@@ -22,12 +22,11 @@ public class SfgDiApplication {
 		// to getBean the instance is grabbed from the Spring Application
 		// Context
 		MyController myController = (MyController) ctx.getBean("myController");
-		String greeting = myController.sayHello();
-		System.out.println(greeting);
+		System.out.println("----------------- Primary Bean DI");
+		System.out.println(myController.sayHello());
 
 		// Starting here we can see how Spring manages DI
 		System.out.println("----------------- property DI");
-
 		// Next sentence will throw NoSuchBeanDefinitionException if the
 		// controller class has not
 		// been annotated as Spring componente ie @Controller
