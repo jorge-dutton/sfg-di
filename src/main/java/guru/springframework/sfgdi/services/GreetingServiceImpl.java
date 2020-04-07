@@ -1,13 +1,16 @@
 package guru.springframework.sfgdi.services;
 
-import org.springframework.stereotype.Service;
-
-@Service
+/**
+ * We keep this for the manual DI proof of concept
+ * 
+ * @author jorge.dutton
+ *
+ */
 public class GreetingServiceImpl implements GreetingService {
 
 	@Override
 	public String sayGreeting() {
-		return "Hello world!";
+		return "Say hello world!";
 	}
 
 }
