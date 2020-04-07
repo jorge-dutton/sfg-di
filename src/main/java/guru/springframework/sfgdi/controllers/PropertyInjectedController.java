@@ -1,5 +1,7 @@
 package guru.springframework.sfgdi.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import guru.springframework.sfgdi.services.GreetingService;
 
 /**
@@ -8,7 +10,10 @@ import guru.springframework.sfgdi.services.GreetingService;
  * @author jorge.dutton
  *
  */
+@Controller
 public class PropertyInjectedController {
+
+	@Autowired
 	public GreetingService greetingService; // Property's got to be public,
 											// there're nasty things involving
 											// private injected propeties
