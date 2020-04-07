@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import guru.springframework.sfgdi.controllers.ConstructorInjectedController;
+import guru.springframework.sfgdi.controllers.I18nController;
 import guru.springframework.sfgdi.controllers.MyController;
 import guru.springframework.sfgdi.controllers.PropertyInjectedController;
 import guru.springframework.sfgdi.controllers.SetterInjectedController;
@@ -14,6 +15,18 @@ public class SfgDiApplication {
 	public static void main(String[] args) {
 		// The run method returns an ApplicationContext
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
+
+		// Next sentence will give BeanDefinitionStoreException because we have
+		// qualified both I18nEnglishGreetingService and
+		// I18nSpanishGreetingService
+		// as i18nService and Spring complains about
+		// ConflictingBeanDefinitionException. So we also have to annotate
+		// @Profile with different profiles
+		// ie "EN" for English and "ES" for Spanish. Afterwards is important to
+		// define
+		// the spring.profiles.active into the application.properties file
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
 
 		// We can ask the Context for an instance of MyController, we never call
 		// the
